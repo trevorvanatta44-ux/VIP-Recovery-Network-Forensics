@@ -7,7 +7,6 @@ This project documents a complete network forensic investigation of the **VIP Re
 The objective of this investigation was to identify the infected host, reconstruct the malware's network activity, identify indicators of compromise (IOCs), analyze attacker communications, and document the attack using industry-standard incident response techniques.
 
 ---
-
 ## Objectives
 
 - Identify the infected workstation
@@ -20,14 +19,12 @@ The objective of this investigation was to identify the infected host, reconstru
 - Produce a professional incident investigation report
 
 ---
-
 ## Tools Used
 
 - Wireshark
 - Malware-Traffic-Analysis.net
 
 ---
-
 ## Skills Demonstrated
 
 - Network Forensics
@@ -44,7 +41,6 @@ The objective of this investigation was to identify the infected host, reconstru
 - Cyber Threat Investigation
 
   ---
-
 ## Investigation Methodology
 
 The investigation followed a structured incident response process:
@@ -61,7 +57,6 @@ The investigation followed a structured incident response process:
 10. Documented recommendations and lessons learned.
 
     ---
-
 ## Investigation Findings
 
 ## Victim Workstation
@@ -79,7 +74,6 @@ The investigation followed a structured incident response process:
 - Public IP lookup activity.
 
   ---
-
 ## Indicators of Compromise (IOCs)
 
 ## Domains
@@ -101,7 +95,6 @@ The investigation followed a structured incident response process:
 - 162.254.34.31
 
   ---
-
 ## MITRE ATT&CK Techniques
 
 | Technique | Description |
@@ -114,7 +107,6 @@ The investigation followed a structured incident response process:
 | T1041 | Exfiltration Over C2 Channel |
 
 ---
-
 ## Investigation Screenshots
 
 ## 1. Evidence Loaded
@@ -122,49 +114,41 @@ The investigation followed a structured incident response process:
 *Screenshot will be added.*
 
 ---
-
 ## 2. Victim Host Identification
 
 *Screenshot will be added.*
 
 ---
-
 ## 3. Network Conversations
 
 *Screenshot will be added.*
 
 ---
-
 ## 4. DNS Analysis
 
 *Screenshot will be added.*
 
 ---
-
 ## 5. TLS Investigation
 
 *Screenshot will be added.*
 
 ---
-
 ## 6. HTTP Requests
 
 *Screenshot will be added.*
 
 ---
-
 ## 7. HTTP Header Analysis
 
 *Screenshot will be added.*
 
 ---
-
 ## 8. HTTP Objects
 
 *Screenshot will be added.*
 
 ---
-
 ## Lessons Learned
 
 This investigation strengthened my understanding of:
