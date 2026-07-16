@@ -28,7 +28,7 @@ The objective of this investigation was to identify the infected host, reconstru
 
 ---
 
-# Skills Demonstrated
+## Skills Demonstrated
 
 - Network Forensics
 - Malware Traffic Analysis
@@ -45,7 +45,7 @@ The objective of this investigation was to identify the infected host, reconstru
 
   ---
 
-# Investigation Methodology
+## Investigation Methodology
 
 The investigation followed a structured incident response process:
 
@@ -62,7 +62,7 @@ The investigation followed a structured incident response process:
 
     ---
 
-# Investigation Findings
+## Investigation Findings
 
 ## Victim Workstation
 
@@ -80,7 +80,7 @@ The investigation followed a structured incident response process:
 
   ---
 
-# Indicators of Compromise (IOCs)
+## Indicators of Compromise (IOCs)
 
 ## Domains
 
@@ -102,7 +102,7 @@ The investigation followed a structured incident response process:
 
   ---
 
-# MITRE ATT&CK Techniques
+## MITRE ATT&CK Techniques
 
 | Technique | Description |
 |-----------|-------------|
@@ -115,7 +115,7 @@ The investigation followed a structured incident response process:
 
 ---
 
-# Investigation Screenshots
+## Investigation Screenshots
 
 ## 1. Evidence Loaded
 
@@ -165,7 +165,7 @@ The investigation followed a structured incident response process:
 
 ---
 
-# Lessons Learned
+## Lessons Learned
 
 This investigation strengthened my understanding of:
 
