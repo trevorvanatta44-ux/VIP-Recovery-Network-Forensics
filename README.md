@@ -156,6 +156,18 @@ Inspection of the HTTP request headers identified the destination host, request 
 ![HTTP Objects](Screenshots/httpobjectslist.png)
 
 The HTTP Objects window was reviewed to identify files transferred over HTTP during the investigation. Reviewing transferred objects helps analysts identify downloaded content and additional artifacts associated with the malware infection.
+## 9. SMTP Data Exfiltration
+
+![SMTP Traffic](Screenshots/SMTP.png)
+
+Analysis of traffic over TCP port 587 identified unencrypted SMTP communications between the infected workstation and **162.254.34.31**. The activity was associated with the `eraqron.shop` infrastructure and was used to transmit victim data through email.
+
+The identified sender and recipient addresses were:
+
+- **Sender:** `rejump@eraqron.shop`
+- **Recipient:** `jump@eraqron.shop`
+
+Because the SMTP session was not encrypted, Wireshark could inspect the email protocol activity directly. This provided evidence of post-infection data exfiltration from the compromised workstation.
 ---
 ## Lessons Learned
 
