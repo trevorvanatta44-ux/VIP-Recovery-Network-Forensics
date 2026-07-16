@@ -40,7 +40,7 @@ The objective of this investigation was to identify the infected host, reconstru
 - MITRE ATT&CK Mapping
 - Cyber Threat Investigation
 
-  ---
+---
 ## Investigation Methodology
 
 The investigation followed a structured incident response process:
@@ -56,7 +56,7 @@ The investigation followed a structured incident response process:
 9. Validated findings against the published investigation.
 10. Documented recommendations and lessons learned.
 
-    ---
+---
 ## Investigation Findings
 
 ## Victim Workstation
@@ -73,7 +73,7 @@ The investigation followed a structured incident response process:
 - Multiple outbound connections.
 - Public IP lookup activity.
 
-  ---
+---
 ## Indicators of Compromise (IOCs)
 
 ## Domains
@@ -94,7 +94,7 @@ The investigation followed a structured incident response process:
 - 149.154.166.110
 - 162.254.34.31
 
-  ---
+---
 ## MITRE ATT&CK Techniques
 
 | Technique | Description |
