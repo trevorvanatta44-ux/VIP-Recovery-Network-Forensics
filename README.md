@@ -111,43 +111,51 @@ The investigation followed a structured incident response process:
 
 ## 1. Evidence Loaded
 
-*Screenshot will be added.*
+![Evidence Loaded](Screenshots/01-pcap-loaded.png)
 
+Initial review of the packet capture confirmed that the evidence contained 5,299 packets for analysis. Wireshark was used to examine packet metadata, protocol activity, and communications between internal and external hosts.
 ---
-## 2. Victim Host Identification
+## 2. Protocol Hierarchy
 
-*Screenshot will be added.*
+![Protocol Hierarchy](Screenshots/Networkprotocolhierarchy.png)
 
+The protocol hierarchy identified the primary protocols present in the capture, including DNS, HTTP, TCP, and TLS. This overview established the types of network communications that would be investigated throughout the incident.
 ---
-## 3. Network Conversations
+## 3. Victim Host Identification
 
-*Screenshot will be added.*
+![Victim Host](Screenshots/02-ipv4-endpoints.png)
 
+IPv4 endpoint statistics identified **10.1.9.101** as the primary workstation involved in the investigation. This host generated the largest amount of network traffic and became the primary focus of the analysis.
 ---
-## 4. DNS Analysis
+## 4. Network Conversations
 
-*Screenshot will be added.*
+![Network Conversations](Screenshots/03-ipv4-conversations.png)
 
+Conversation statistics revealed the external systems communicating with the infected workstation. The largest volume of traffic occurred between the victim host and **51.159.84.185**, identifying it as a high-priority communication for further investigation.
 ---
-## 5. TLS Investigation
+## 5. DNS Analysis
 
-*Screenshot will be added.*
+![DNS Analysis](Screenshots/05-dns-analysis.png)
 
+DNS traffic identified several domains contacted by the infected workstation, including cloud storage, public IP lookup services, Telegram infrastructure, and additional external domains used during the infection.
 ---
 ## 6. HTTP Requests
 
-*Screenshot will be added.*
+![HTTP Requests](Screenshots/06-http-requests.png)
 
+HTTP GET requests were examined to determine the resources requested by the infected host. This activity helped identify additional infrastructure contacted during the malware execution process.
 ---
 ## 7. HTTP Header Analysis
 
-*Screenshot will be added.*
+![HTTP Header](Screenshots/07-http-header-expansion.png)
 
+Inspection of the HTTP request headers identified the destination host, request method, user agent, and requested URI. These details provided additional context regarding the workstation's outbound communications.
 ---
 ## 8. HTTP Objects
 
-*Screenshot will be added.*
+![HTTP Objects](Screenshots/httpobjectslist.png)
 
+The HTTP Objects window was reviewed to identify files transferred over HTTP during the investigation. Reviewing transferred objects helps analysts identify downloaded content and additional artifacts associated with the malware infection.
 ---
 ## Lessons Learned
 
