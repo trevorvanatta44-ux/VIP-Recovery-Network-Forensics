@@ -65,13 +65,21 @@ This investigation followed a structured digital forensic methodology focused on
 - Identified as the compromised workstation based on IPv4 endpoint statistics and conversation analysis.
 - Generated the highest packet count within the capture and initiated DNS, HTTP, TLS, and SMTP communications throughout the investigation.
 
-## Observed Malicious Network Activity
+## Observed Network Communication Sequence
 
-- DNS lookups for external infrastructure.
-- HTTP GET requests.
-- TLS encrypted communications.
-- Multiple outbound connections.
-- Public IP lookup activity.
+The observed communication sequence was reconstructed by correlating evidence across multiple network protocols observed throughout the packet capture.
+
+1. **DNS Resolution:** The compromised workstation first generated DNS queries to resolve external domain names, including `api.telegram.org`, `eraqron.shop`, and other observed domains. DNS resolution was required before the workstation could establish communications with systems identified by domain name.
+
+2. **TCP Connection Establishment:** After receiving DNS responses, the workstation established TCP connections with the resolved external IP addresses. TCP establishes a reliable connection through a three-way handshake (SYN, SYN/ACK, ACK) before application-layer protocols such as HTTP, TLS, or SMTP exchange data.
+
+3. **HTTP Communications:** HTTP requests and responses were observed over the established TCP connections, allowing the workstation to communicate with external web resources and retrieve remote content.
+
+4. **TLS Communications:** TLS handshakes were then observed, encrypting subsequent communications between the workstation and several external systems. Although the encrypted payloads could not be inspected, the handshake metadata and connection information remained visible.
+
+5. **SMTP Communications:** Later in the capture, the workstation established an SMTP session over TCP port 587 with the `eraqron.shop` mail server. The session successfully authenticated before transmitting an outbound email from `rejump@eraqron.shop` to `jump@eraqron.shop`.
+
+This sequence was reconstructed by correlating the observed DNS, TCP, HTTP, TLS, and SMTP traffic throughout the packet capture.
 
 
 # Indicators of Compromise (IOCs)
@@ -180,8 +188,8 @@ Because the SMTP session was not encrypted, Wireshark was able to inspect the SM
 - Correlating DNS, HTTP, TLS, SMTP, and TCP traffic provided significantly more insight than analyzing any single protocol in isolation.
 - Encrypted communications remained valuable for investigation because DNS activity, TLS handshake metadata, connection endpoints, and communication patterns continued to reveal attacker infrastructure and malware behavior.
 - Documenting indicators of compromise (IOCs) and mapping observed activity to the MITRE ATT&CK framework improved the organization, communication, and operational value of the investigation findings.
-- A structured, evidence-based methodology enabled the malware's communication sequence to be reconstructed and supported clear, repeatable forensic findings.
+- A structured, evidence-based methodology enabled the observed network communication sequence to be reconstructed and supported clear, repeatable forensic findings.
 
 ## Conclusion
 
-Analysis of the packet capture identified 10.1.9.101 as the compromised workstation responsible for the majority of the observed network communications associated with the malware infection.Examination of DNS, HTTP, TLS, SMTP, and TCP traffic reconstructed the malware's communication sequence, identified the external infrastructure contacted during execution, and revealed outbound SMTP communications associated with the eraqron.shop mail server. The investigation documented multiple indicators of compromise (IOCs), including observed domains and IP addresses associated with the malware's activity, and mapped the observed adversary behaviors to the MITRE ATT&CK framework using T1071.004 (DNS), T1071.001 (Application Layer Protocol), and T1041 (Exfiltration Over C2 Channel). This investigation demonstrates how systematic packet analysis can identify compromised systems, reconstruct malware communications, and produce evidence-based findings suitable for Digital Forensics and Incident Response (DFIR) investigations.
+Analysis of the packet capture identified 10.1.9.101 as the compromised workstation responsible for the majority of the observed network communications. Examination of DNS, HTTP, TLS, SMTP, and TCP traffic reconstructed the observed network communication sequence, identified the external systems contacted by the compromised workstation, and documented outbound SMTP communications involving the eraqron.shop mail server. The investigation documented multiple indicators of compromise (IOCs), including observed domains and IP addresses associated with the malware's activity, and mapped the observed adversary behaviors to the MITRE ATT&CK framework using T1071.004 (DNS), T1071.001 (Application Layer Protocol), and T1041 (Exfiltration Over C2 Channel). This investigation demonstrates how systematic packet analysis can identify compromised systems, reconstruct malware communications, and produce evidence-based findings suitable for Digital Forensics and Incident Response (DFIR) investigations.
