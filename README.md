@@ -125,7 +125,7 @@ Analysis of SMTP traffic over TCP port 587 identified outbound email communicati
 
 ![Evidence Loaded](Screenshots/01-pcap-loaded.png)
 
-Initial review of the packet capture confirmed that the evidence contained 5,299 packets for analysis. Wireshark was used to examine packet metadata, protocol activity, and communications between internal and external hosts.
+The packet capture was successfully loaded into Wireshark, confirming a total of 5,299 captured packets for analysis. Initial inspection revealed DNS resolution followed by TCP connection establishment and TLS communications originating from the internal workstation (10.1.9.101), providing the starting point for the forensic investigation.
 ---
 ## 2. Protocol Hierarchy
 
