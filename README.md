@@ -44,25 +44,24 @@ The case scenario provided context regarding the initial infection vector; howev
 - Network Traffic Analysis
 - MITRE ATT&CK Mapping
 - Cyber Threat Investigation
-
 ---
 ## Investigation Methodology
-This investigation followed a structured Digital Forensics and Incident Response (DFIR) network forensics methodology. The investigation began with evidence acquisition and packet capture validation before identifying the compromised host through endpoint statistics. Network traffic was then analyzed across DNS, HTTP, SMTP, TLS, and TCP protocols to identify attacker infrastructure, reconstruct the malware's communication patterns, extract indicators of compromise (IOCs), and develop an attack timeline. Observed adversary behaviors were mapped to the MITRE ATT&CK framework, and all findings were documented in a report.
+This investigation followed a structured Digital Forensics and Incident Response (DFIR) network forensics methodology. The investigation began with evidence acquisition and packet capture validation before identifying the compromised host through endpoint statistics. Network traffic was then analyzed across DNS, HTTP, SMTP, TLS, and TCP protocols to identify external infrastructure, reconstruct the malware's communication patterns, extract indicators of compromise (IOCs), and develop an attack timeline.
 
 ---
 ## Detection & Analysis Workflow
 
-1. Validated the packet capture and confirmed evidence integrity.
-2. Identified the compromised workstation using endpoint statistics.
-3. Profiled network protocols to establish baseline communications.
-4. Analyzed DNS requests to identify external infrastructure.
-5. Examined HTTP communications and request headers.
-6. Reviewed SMTP traffic to identify data exfiltration activity.
-7. Inspected TLS sessions and metadata for encrypted communications.
-8. Extracted indicators of compromise (IOCs), including domains and IP addresses.
-9. Reconstructed the malware's network activity and attack timeline.
-10. Mapped observed adversary behavior to the MITRE ATT&CK framework.
-11. Documented findings in a structured incident investigation report.
+1. Validated the packet capture and reviewed capture statistics.
+2. Identified the compromised workstation using IPv4 Endpoint Statistics.
+3. Reviewed the Protocol Hierarchy to identify the primary network protocols.
+4. Analyzed DNS requests to identify domains associated with the malware activity.
+5. Examined HTTP requests, headers, and transferred objects.
+6. Inspected TLS sessions to identify encrypted communications.
+7. Reviewed SMTP traffic to identify outbound email communications.
+8. Documented indicators of compromise (IOCs).
+9. Reconstructed the malware's communication sequence.
+10. Mapped observed behaviors to the MITRE ATT&CK framework.
+11. Documented the investigation findings.
 
 ## Investigation Findings
 
@@ -70,7 +69,7 @@ This investigation followed a structured Digital Forensics and Incident Response
 
 - **IP Address:** 10.1.9.101
 - Identified as the compromised workstation based on IPv4 endpoint statistics and conversation analysis.
-- Generated the highest packet count within the capture and initiated DNS, HTTP, TLS, and SMTP communications communications throughout the investigation.
+- Generated the highest packet count within the capture and initiated DNS, HTTP, TLS, and SMTP communications throughout the investigation.
 
 ## Observed Malicious Network Activity
 
