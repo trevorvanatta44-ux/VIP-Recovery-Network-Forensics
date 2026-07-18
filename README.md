@@ -21,9 +21,9 @@ The objective of this investigation was to identify the infected host, reconstru
 ---
 ## Tools Used
 
-Wireshark
-Malware-Traffic-Analysis.net
-MITRE ATT&CK Framework
+- Wireshark
+- Malware-Traffic-Analysis.net
+- MITRE ATT&CK Framework
 
 ---
 ## Skills Demonstrated
