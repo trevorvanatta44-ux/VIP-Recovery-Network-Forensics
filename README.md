@@ -1,10 +1,14 @@
 # VIP Recovery Malware Network Forensics Investigation
 
-## Overview
+## Executive Summary
 
 This project documents a complete network forensic investigation of the **VIP Recovery** malware infection using **Wireshark**.
 
 The objective of this investigation was to identify the infected host, reconstruct the malware's network activity, identify indicators of compromise (IOCs), analyze attacker communications, and document the attack using a structured Digital Forensics and Incident Response (DFIR) network forensics methodology, with observed adversary behaviors mapped to the MITRE ATT&CK framework.
+
+This investigation analyzes a malware network capture provided by Malware-Traffic-Analysis.net to identify malicious communications, extract indicators of compromise (IOCs), and reconstruct the observed attack activity.
+
+## Background
 
 ---
 ## Objectives
@@ -109,6 +113,7 @@ This investigation followed a structured Digital Forensics and Incident Response
 | T1071.004 | DNS |
 | T1041 | Exfiltration Over C2 Channel |
 
+- The mapped techniques demonstrate the progression of the attack from initial access through command-and-control communications and data exfiltration, providing a structured view of the adversary's behavior throughout the investigation.
 ---
 ## Investigation Screenshots
 
