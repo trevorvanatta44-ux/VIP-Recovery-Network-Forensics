@@ -22,41 +22,34 @@ Although the case scenario provided background information about the suspected i
 - Document the investigation findings
 
 
-## Tools Used
+## Tools and Resources
 
 - Wireshark
 - MITRE ATT&CK Framework
-
-## Data Source
-
--Malware-Traffic-Analysis.net (VIP recovery PCAP)
-
+- Malware-Traffic-Analysis.net (VIP recovery PCAP)
 
 ## Skills Demonstrated
 
 - Network Forensics
 - Malware Traffic Analysis
-- Packet Analysis
+- TCP/IP Analysis
 - DNS Analysis
 - HTTP Analysis
-- TLS Analysis
-- TCP/IP
-- IOC Identification
-- Incident Response
-- Network Traffic Analysis
+- TLS Traffic Analysis
+- Indicator of Compromise (IOC) Identification
+- Communication Sequence Reconstruction
 - MITRE ATT&CK Mapping
-- Cyber Threat Investigation
 
 ## Investigation Methodology
-This investigation followed a structured Digital Forensics and Incident Response (DFIR) network forensics methodology. The investigation began with evidence acquisition and packet capture validation before identifying the compromised host through endpoint statistics. Network traffic was then analyzed across DNS, HTTP, SMTP, TLS, and TCP protocols to identify external infrastructure, reconstruct the malware's communication patterns, extract indicators of compromise (IOCs), and develop an attack timeline.
 
+This investigation followed a structured digital forensic methodology focused on network traffic analysis. The investigation began by reviewing the packet capture before identifying the compromised workstation using endpoint statistics. Network traffic was then examined across DNS, HTTP, SMTP, TLS, and TCP protocols to analyze the observed network activity, identify external systems contacted by the compromised workstation, reconstruct the observed network communication sequence, and extract indicators of compromise (IOCs). The resulting findings were documented and mapped to the MITRE ATT&CK framework.
 
 ## Detection & Analysis Workflow
 
 1. Validated the packet capture and reviewed capture statistics.
 2. Identified the compromised workstation using IPv4 Endpoint Statistics.
 3. Reviewed the Protocol Hierarchy to identify the primary network protocols.
-4. Analyzed DNS requests to identify domains associated with the malware activity.
+4. Analyzed DNS requests to identify observed domain lookups.
 5. Examined HTTP requests, headers, and transferred objects.
 6. Inspected TLS sessions to identify encrypted communications.
 7. Reviewed SMTP traffic to identify outbound email communications.
