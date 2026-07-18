@@ -4,7 +4,7 @@
 
 This project documents a complete network forensic investigation of the **VIP Recovery** malware infection using **Wireshark**.
 
-The objective of this investigation was to identify the infected host, reconstruct the malware's network activity, identify indicators of compromise (IOCs), analyze attacker communications, and document the attack using industry-standard incident response techniques.
+The objective of this investigation was to identify the infected host, reconstruct the malware's network activity, identify indicators of compromise (IOCs), analyze attacker communications, and document the attack using network forensics/DFIR investigation methodology with MITRE ATT&CK for classification.
 
 ---
 ## Objectives
@@ -42,22 +42,22 @@ The objective of this investigation was to identify the infected host, reconstru
 
 ---
 ## Investigation Methodology
-
-The investigation followed a structured incident response process:
-
-1. Loaded and reviewed the packet capture in Wireshark.
-2. Identified the primary workstation using endpoint statistics.
-3. Examined network conversations to identify external communications.
-4. Analyzed DNS traffic to identify domains contacted by the infected host.
-5. Investigated HTTP requests and responses.
-6. Examined encrypted TLS sessions and extracted metadata.
-7. Identified indicators of compromise (IOCs).
-8. Reconstructed the malware's network activity.
-9. Validated findings against the published investigation.
-10. Documented recommendations and lessons learned.
+This investigation followed a structured Digital Forensics and Incident Response (DFIR) network forensics methodology. The investigation began with evidence acquisition and packet capture validation before identifying the compromised host through endpoint statistics. Network traffic was then analyzed across DNS, HTTP, SMTP, TLS, and TCP protocols to identify attacker infrastructure, reconstruct the malware's communication patterns, extract indicators of compromise (IOCs), and develop an attack timeline. Observed adversary behaviors were mapped to the MITRE ATT&CK framework, and all findings were documented in a formal incident investigation report.
 
 ---
-## Investigation Findings
+## Detection & Analysis Workflow
+
+1. Validated the packet capture and confirmed evidence integrity.
+2. Identified the compromised workstation using endpoint statistics.
+3. Profiled network protocols to establish baseline communications.
+4. Analyzed DNS requests to identify external infrastructure.
+5. Examined HTTP communications and request headers.
+6. Reviewed SMTP traffic to identify data exfiltration activity.
+7. Inspected TLS sessions and metadata for encrypted communications.
+8. Extracted indicators of compromise (IOCs), including domains and IP addresses.
+9. Reconstructed the malware's network activity and attack timeline.
+10. Mapped observed adversary behavior to the MITRE ATT&CK framework.
+11. Documented findings in a structured incident investigation report.
 
 ## Victim Workstation
 
