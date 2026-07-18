@@ -61,9 +61,11 @@ This investigation followed a structured digital forensic methodology focused on
 
 ## Victim Workstation
 
-- **IP Address:** 10.1.9.101
-- Identified as the compromised workstation based on IPv4 endpoint statistics and conversation analysis.
-- Generated the highest packet count within the capture and initiated DNS, HTTP, TLS, and SMTP communications throughout the investigation.
+- **IP Address:** `10.1.9.101`
+- Identified as the compromised workstation based on IPv4 Endpoint Statistics and IPv4 Conversation analysis.
+- Generated the highest volume of observed network activity within the packet capture.
+- Initiated DNS, HTTP, TLS, and SMTP communications with multiple external systems throughout the investigation.
+- Served as the primary focus of the network forensic analysis because it was responsible for the majority of the observed communications.
 
 ## Observed Network Communication Sequence
 
@@ -82,7 +84,9 @@ The observed communication sequence was reconstructed by correlating evidence ac
 This sequence was reconstructed by correlating the observed DNS, TCP, HTTP, TLS, and SMTP traffic throughout the packet capture.
 
 
-# Indicators of Compromise (IOCs)
+# Observed Indicators of Compromise (IOCs)
+
+The following domains and IP addresses were observed during the investigation and are documented as indicators associated with the captured network activity. Their inclusion does not necessarily indicate that every domain or IP address is inherently malicious; some represent legitimate services contacted during the observed communications.
 
 ## Domains
 
@@ -118,11 +122,19 @@ Following DNS resolution, the infected workstation communicated with external in
 
 ### T1041 – Exfiltration Over C2 Channel
 
-Analysis of SMTP traffic over TCP port 587 identified outbound email communications between the infected workstation and the `eraqron.shop` mail infrastructure. Because the SMTP session was unencrypted, the sender and recipient email addresses were visible within the packet capture, providing direct evidence that information was being transmitted from the compromised host. This behavior aligns with MITRE ATT&CK Technique T1041 because the malware used an existing communication channel to transfer collected data to attacker-controlled infrastructure. Identifying this activity demonstrates how packet analysis can reveal evidence of data exfiltration during a network forensic investigation.
+## MITRE ATT&CK Mapping
+
+The observed network behaviors were mapped to the MITRE ATT&CK framework to classify techniques identified during the network forensic investigation.
+
+| Technique ID | Technique | Evidence Observed |
+|--------------|-----------|-------------------|
+| T1071.004 | DNS | DNS queries were observed resolving external domains including `api.telegram.org`, `eraqron.shop`, `firebasestorage.googleapis.com`, and other domains before outbound communications were established. |
+| T1071.001 | Application Layer Protocol | HTTP and SMTP application-layer protocols were observed communicating with external systems throughout the investigation. |
+| T1041 | Exfiltration Over C2 Channel | An outbound SMTP session over TCP port 587 was observed between the compromised workstation and the `eraqron.shop` mail server. Sender and recipient email addresses were visible because the SMTP session was unencrypted. |
 
 ---
-## Investigation Screenshots
-
+# Investigation Screenshots
+---
 ## 1. Evidence Loaded
 
 ![Evidence Loaded](Screenshots/01-pcap-loaded.png)
