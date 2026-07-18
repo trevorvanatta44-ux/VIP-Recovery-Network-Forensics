@@ -1,5 +1,5 @@
 # VIP Recovery Malware Network Forensics Investigation
----
+
 ## Executive Summary
 
 This project documents a network forensic investigation of the VIP Recovery malware-related packet capture (PCAP) provided by Malware-Traffic-Analysis.net. Using Wireshark, the PCAP was analyzed to identify the compromised workstation, analyze DNS, HTTP, TLS, and SMTP communications observed in the capture, extract indicators of compromise (IOCs), reconstruct the observed communication sequence, and map network behaviors to the MITRE ATT&CK framework.
@@ -21,17 +21,17 @@ Although the case scenario provided background information about the suspected i
 - Map observed network behaviors to the MITRE ATT&CK framework
 - Document the investigation findings
 
----
+
 ## Tools Used
 
 - Wireshark
 - MITRE ATT&CK Framework
----
+
 ## Data Source
 
 -Malware-Traffic-Analysis.net (VIP recovery PCAP)
 
----
+
 ## Skills Demonstrated
 
 - Network Forensics
@@ -46,11 +46,11 @@ Although the case scenario provided background information about the suspected i
 - Network Traffic Analysis
 - MITRE ATT&CK Mapping
 - Cyber Threat Investigation
----
+
 ## Investigation Methodology
 This investigation followed a structured Digital Forensics and Incident Response (DFIR) network forensics methodology. The investigation began with evidence acquisition and packet capture validation before identifying the compromised host through endpoint statistics. Network traffic was then analyzed across DNS, HTTP, SMTP, TLS, and TCP protocols to identify external infrastructure, reconstruct the malware's communication patterns, extract indicators of compromise (IOCs), and develop an attack timeline.
 
----
+
 ## Detection & Analysis Workflow
 
 1. Validated the packet capture and reviewed capture statistics.
@@ -81,8 +81,8 @@ This investigation followed a structured Digital Forensics and Incident Response
 - Multiple outbound connections.
 - Public IP lookup activity.
 
----
-## Indicators of Compromise (IOCs)
+
+# Indicators of Compromise (IOCs)
 
 ## Domains
 
