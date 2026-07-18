@@ -54,9 +54,8 @@ This investigation followed a structured digital forensic methodology focused on
 6. Inspected TLS sessions to identify encrypted communications.
 7. Reviewed SMTP traffic to identify outbound email communications.
 8. Documented indicators of compromise (IOCs).
-9. Reconstructed the malware's communication sequence.
-10. Mapped observed behaviors to the MITRE ATT&CK framework.
-11. Documented the investigation findings.
+9. Reconstructed the observed network communication sequence.
+10. Mapped observed network behaviors to the MITRE ATT&CK framework.
 
 ## Investigation Findings
 
@@ -168,14 +167,13 @@ The HTTP Objects window was reviewed to identify files transferred over HTTP dur
 
 ![SMTP Traffic](Screenshots/SMTP.png)
 
-Analysis of traffic over TCP port 587 identified unencrypted SMTP communications between the infected workstation and **162.254.34.31**. The activity was associated with the `eraqron.shop` infrastructure and was used to transmit victim data through email.
-
-The identified sender and recipient addresses were:
+Analysis of traffic over TCP port 587 identified unencrypted SMTP communications between the compromised workstation and 162.254.34.31. The SMTP session involved the domain `eraqron.shop` and included the following email addresses:
 
 - **Sender:** `rejump@eraqron.shop`
 - **Recipient:** `jump@eraqron.shop`
 
-Because the SMTP session was not encrypted, Wireshark could inspect the email protocol activity directly. This provided evidence of post-infection data exfiltration from the compromised workstation.
+Because the SMTP session was not encrypted, Wireshark was able to inspect the SMTP protocol directly, including the sender and recipient information exchanged during the session. This provided visibility into the outbound email communications observed in the packet capture.
+
 ---
 ## Lessons Learned
 
