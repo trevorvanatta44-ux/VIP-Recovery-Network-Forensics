@@ -106,22 +106,6 @@ The following domains and IP addresses were observed during the investigation an
 - 149.154.166.110
 - 162.254.34.31
 
----
-
-## MITRE ATT&CK Mapping
-
-The observed network activity was mapped to the MITRE ATT&CK framework to classify adversary behavior using an industry-standard knowledge base. Rather than simply identifying suspicious traffic, MITRE ATT&CK provides standardized techniques that describe how attackers communicate, move data, and accomplish objectives during an intrusion. Mapping the observed evidence to MITRE ATT&CK allows analysts to document incidents consistently, understand attacker behavior, and develop detection and response strategies based on recognized adversary techniques.
-
-### T1071.004 – DNS
-
-The compromised workstation generated multiple DNS queries to resolve external domains before establishing outbound network communications. Analysis of the packet capture identified requests for domains including `api.telegram.org`, `eraqron.shop`, `firebasestorage.googleapis.com`, and other external infrastructure. These DNS lookups demonstrate the malware's reliance on domain name resolution to locate remote systems prior to communication. Mapping this activity to T1071.004 documents the use of DNS as part of the malware's communication process and highlights infrastructure that can be monitored or blocked during future detection efforts.
-
-### T1071.001 – Application Layer Protocol
-
-Following DNS resolution, the infected workstation communicated with external infrastructure using application-layer protocols observed within the packet capture. HTTP requests retrieved remote resources, while SMTP communications were used to transmit information from the compromised system. Because HTTP and SMTP are legitimate protocols commonly permitted through firewalls, attackers frequently abuse them to blend malicious traffic with normal network activity. The observed communications align with MITRE ATT&CK Technique T1071.001 because the malware relied on standard application-layer protocols to conduct its network operations.
-
-### T1041 – Exfiltration Over C2 Channel
-
 ## MITRE ATT&CK Mapping
 
 The observed network behaviors were mapped to the MITRE ATT&CK framework to classify techniques identified during the network forensic investigation.
