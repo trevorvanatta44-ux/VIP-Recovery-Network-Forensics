@@ -2,33 +2,35 @@
 
 ## Executive Summary
 
-This project documents a network forensic investigation of the VIP Recovery malware-related packet capture (PCAP) provided by Malware-Traffic-Analysis.net. Using Wireshark, the PCAP was analyzed to identify the compromised workstation, examine malicious DNS, HTTP, TLS, and SMTP communications, extract indicators of compromise (IOCs), reconstruct the malware's observed communication sequence, and map adversary behavior to the MITRE ATT&CK framework.
+This project documents a network forensic investigation of the VIP Recovery malware-related packet capture (PCAP) provided by Malware-Traffic-Analysis.net. Using Wireshark, the PCAP was analyzed to identify the compromised workstation, analyze DNS, HTTP, TLS, and SMTP communications observed in the capture, extract indicators of compromise (IOCs), reconstruct the observed communication sequence, and map network behaviors to the MITRE ATT&CK framework.
 
 ## Background
 
-The Malware-Traffic-Analysis.net case scenario describes a malware infection that originated from a phishing email containing a malicious ZIP archive. After the archive was extracted, a Visual Basic Script (VBS) executed and initiated the infection. The resulting malicious network activity was captured in a packet capture (PCAP), which served as the primary source of forensic evidence for this investigation.
+The Malware-Traffic-Analysis.net case scenario describes an incident in which a phishing email containing a malicious ZIP archive was delivered to a victim. According to the scenario, extracting the archive executed a Visual Basic Script (VBS), resulting in malicious network activity that was recorded in a packet capture (PCAP). The PCAP served as the primary source of forensic evidence analyzed during this investigation.
 
-The case scenario provided context regarding the initial infection vector; however, all findings, indicators of compromise (IOCs), and conclusions documented in this report were independently derived through forensic analysis of the PCAP using Wireshark.
+Although the case scenario provided background information about the suspected infection chain, the findings presented in this report are based solely on forensic analysis of the PCAP using Wireshark. All documented indicators of compromise (IOCs), observed network communications, and investigation conclusions were derived from evidence contained within the capture.
 
 ---
 ## Objectives
 
-- Identify the infected workstation
+- Identify the compromised workstation
 - Analyze DNS requests
 - Investigate HTTP communications
 - Examine encrypted TLS traffic
 - Identify indicators of compromise (IOCs)
-- Reconstruct the attack timeline
-- Map observed activity to the MITRE ATT&CK framework
-- Produce a professional incident investigation report
+- Reconstruct the observed communication sequence
+- Map observed network behaviors to the MITRE ATT&CK framework
+- Document the investigation findings
 
 ---
 ## Tools Used
 
 - Wireshark
-- Malware-Traffic-Analysis.net
 - MITRE ATT&CK Framework
+---
+## Data Source
 
+-Malware-Traffic-Analysis.net (VIP recovery PCAP)
 ---
 ## Skills Demonstrated
 
@@ -191,4 +193,4 @@ Because the SMTP session was not encrypted, Wireshark could inspect the email pr
 
 ## Conclusion
 
-Analysis of the packet capture identified **10.1.9.101** as the compromised workstation responsible for the majority of malicious network activity. Examination of DNS, HTTP, TLS, SMTP, and TCP traffic reconstructed the malware's observed communication sequence, identified attacker-controlled infrastructure, and revealed outbound SMTP communications associated with the **eraqron.shop** mail server. The investigation documented multiple indicators of compromise (IOCs), including malicious domains and IP addresses, and mapped the observed adversary behaviors to the MITRE ATT&CK framework using **T1071.004 (DNS)**, **T1071.001 (Application Layer Protocol)**, and **T1041 (Exfiltration Over C2 Channel)**. This investigation demonstrates how systematic packet analysis can identify compromised systems, reconstruct malware communications, and produce evidence-based findings suitable for Digital Forensics and Incident Response (DFIR) investigations.
+Analysis of the packet capture identified 10.1.9.101 as the compromised workstation responsible for the majority of the observed network communications associated with the malware infection.Examination of DNS, HTTP, TLS, SMTP, and TCP traffic reconstructed the malware's communication sequence, identified the external infrastructure contacted during execution, and revealed outbound SMTP communications associated with the eraqron.shop mail server. The investigation documented multiple indicators of compromise (IOCs), including observed domains and IP addresses associated with the malware's activity, and mapped the observed adversary behaviors to the MITRE ATT&CK framework using T1071.004 (DNS), T1071.001 (Application Layer Protocol), and T1041 (Exfiltration Over C2 Channel). This investigation demonstrates how systematic packet analysis can identify compromised systems, reconstruct malware communications, and produce evidence-based findings suitable for Digital Forensics and Incident Response (DFIR) investigations.
