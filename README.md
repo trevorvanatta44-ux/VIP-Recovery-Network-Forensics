@@ -2,13 +2,13 @@
 
 ## Executive Summary
 
-This project documents a complete network forensic investigation of the **VIP Recovery** malware infection using **Wireshark**.
-
-The objective of this investigation was to identify the infected host, reconstruct the malware's network activity, identify indicators of compromise (IOCs), analyze attacker communications, and document the attack using a structured Digital Forensics and Incident Response (DFIR) network forensics methodology, with observed adversary behaviors mapped to the MITRE ATT&CK framework.
-
-This investigation analyzes a malware network capture provided by Malware-Traffic-Analysis.net to identify malicious communications, extract indicators of compromise (IOCs), and reconstruct the observed attack activity.
+This project documents a network forensic investigation of the VIP Recovery malware traffic provided by Malware-Traffic-Analysis.net. Using Wireshark, the packet capture (PCAP) was analyzed to identify the compromised host, examine malicious network communications, extract indicators of compromise (IOCs), reconstruct the observed attack activity, and map relevant adversary behaviors to the MITRE ATT&CK framework. Background information from the case scenario was used to understand the initial infection vector, while the PCAP served as the primary source of forensic evidence throughout the investigation.
 
 ## Background
+
+The Malware-Traffic-Analysis.net case scenario describes a malware infection that began with a phishing email containing a malicious ZIP archive. After the archive was extracted, a Visual Basic Script (VBS) file executed and initiated the infection. The resulting network activity was captured in a packet capture (PCAP), which served as the evidence analyzed during this investigation.
+
+While the initial infection vector was provided by the case scenario, all network findings, indicators of compromise, and traffic analysis presented in this report were derived from my own examination of the PCAP using Wireshark.
 
 ---
 ## Objectives
@@ -102,18 +102,29 @@ This investigation followed a structured Digital Forensics and Incident Response
 - 162.254.34.31
 
 ---
-## MITRE ATT&CK Techniques
+
+## MITRE ATT&CK Mapping
+
+The observed network activity was mapped to the MITRE ATT&CK framework to classify adversary behavior using an industry-standard knowledge base. Rather than simply identifying suspicious traffic, MITRE ATT&CK provides standardized techniques that describe how attackers communicate, move data, and accomplish objectives during an intrusion. Mapping the observed evidence to MITRE ATT&CK allows analysts to document incidents consistently, understand attacker behavior, and develop detection and response strategies based on recognized adversary techniques.
+
+### T1071.004 – DNS
+
+The compromised workstation generated multiple DNS queries to resolve external domains before establishing outbound network communications. Analysis of the packet capture identified requests for domains including `api.telegram.org`, `eraqron.shop`, `firebasestorage.googleapis.com`, and other external infrastructure. These DNS lookups demonstrate the malware's reliance on domain name resolution to locate remote systems prior to communication. Mapping this activity to T1071.004 documents the use of DNS as part of the malware's communication process and highlights infrastructure that can be monitored or blocked during future detection efforts.
+
+### T1071.001 – Application Layer Protocol
+
+Following DNS resolution, the infected workstation communicated with external infrastructure using application-layer protocols observed within the packet capture. HTTP requests retrieved remote resources, while SMTP communications were used to transmit information from the compromised system. Because HTTP and SMTP are legitimate protocols commonly permitted through firewalls, attackers frequently abuse them to blend malicious traffic with normal network activity. The observed communications align with MITRE ATT&CK Technique T1071.001 because the malware relied on standard application-layer protocols to conduct its network operations.
+
+### T1041 – Exfiltration Over C2 Channel
+
+Analysis of SMTP traffic over TCP port 587 identified outbound email communications between the infected workstation and the `eraqron.shop` mail infrastructure. Because the SMTP session was unencrypted, the sender and recipient email addresses were visible within the packet capture, providing direct evidence that information was being transmitted from the compromised host. This behavior aligns with MITRE ATT&CK Technique T1041 because the malware used an existing communication channel to transfer collected data to attacker-controlled infrastructure. Identifying this activity demonstrates how packet analysis can reveal evidence of data exfiltration during a network forensic investigation.
 
 | Technique | Description |
 |-----------|-------------|
-| T1566.001 | Spearphishing Attachment |
-| T1059.005 | Visual Basic |
-| T1105 | Ingress Tool Transfer |
 | T1071.001 | Application Layer Protocol |
 | T1071.004 | DNS |
 | T1041 | Exfiltration Over C2 Channel |
 
-- The mapped techniques demonstrate the progression of the attack from initial access through command-and-control communications and data exfiltration, providing a structured view of the adversary's behavior throughout the investigation.
 ---
 ## Investigation Screenshots
 
