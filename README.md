@@ -190,13 +190,9 @@ Because the SMTP session was not encrypted, Wireshark could inspect the email pr
 ---
 ## Lessons Learned
 
-This investigation strengthened my understanding of:
+## Lessons Learned
 
-- Identifying infected hosts through endpoint statistics.
-- Using DNS traffic to identify attacker infrastructure.
-- Following TCP conversations to understand network communications.
-- Interpreting TLS metadata when payloads are encrypted.
-- Examining HTTP headers to identify requested resources.
-- Documenting indicators of compromise.
-- Mapping observed attacker behavior to the MITRE ATT&CK framework.
-- Writing a structured incident investigation report.
+- Correlating DNS, HTTP, TLS, SMTP, and TCP traffic provided significantly more insight than analyzing any single protocol in isolation.
+- Encrypted traffic remained valuable for investigation because DNS activity, TLS handshake metadata, connected endpoints, and communication patterns still revealed attacker and malware behavior.
+- Documenting indicators of compromise (IOCs) and mapping observed activity to the MITRE ATT&CK framework transformed raw packet data into structured forensic findings that can support future detection and incident response.
+- A structured, evidence-based methodology enabled the malware's communication sequence to be reconstructed and supported clear, repeatable forensic findings.
