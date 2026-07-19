@@ -75,9 +75,9 @@ The observed communication sequence was reconstructed by correlating evidence ac
 
 2. **TCP Connection Establishment:** After receiving DNS responses, the workstation established TCP connections with the resolved external IP addresses. TCP establishes a reliable connection through a three-way handshake (SYN, SYN/ACK, ACK) before application-layer protocols such as HTTP, TLS, or SMTP exchange data.
 
-3. **HTTP Communications:** HTTP requests and responses were observed over the established TCP connections, allowing the workstation to communicate with external web resources and retrieve remote content.
-
-4. **TLS Communications:** TLS handshakes were observed before encrypted communications were exchanged between the workstation and several external systems. Although the encrypted payloads could not be inspected, the handshake metadata and connection information remained visible. Although the encrypted payloads could not be inspected, the handshake metadata and connection information remained visible.
+3. **TLS Communications:** After TCP connections were established, TLS handshakes were observed between the workstation and several external systems. The TLS handshake negotiated encrypted sessions before application data was exchanged. While the encrypted payloads could not be inspected, the handshake metadata and connection information remained visible for analysis.
+   
+4. **HTTP Communications:** HTTP requests and responses were observed over the established TCP connections, allowing the workstation to communicate with external web resources and retrieve remote content.
 
 5. **SMTP Communications:** Later in the capture, the workstation established an SMTP session over TCP port 587 with the `eraqron.shop` mail server. The session successfully authenticated before transmitting an outbound email from `rejump@eraqron.shop` to `jump@eraqron.shop`.
 
