@@ -10,19 +10,6 @@ The Malware-Traffic-Analysis.net case scenario describes an incident in which a 
 
 Although the case scenario provided background information about the suspected infection chain, the findings presented in this report are based solely on forensic analysis of the PCAP using Wireshark. All documented indicators of compromise (IOCs), observed network communications, and investigation conclusions were derived from evidence contained within the capture.
 
-## Objectives and Workflow
-
-- Identify the compromised workstation
-- Analyze DNS requests
-- Confirm TCP handshakes connected to the compromised workstation
-- Analyze TLS handshakes and encrypted communications
-- Analyze HTTP communications and observed web requests
-- Identify indicators of compromise (IOCs)
-- Reconstruct the observed communication sequence
-- Map observed network behaviors to the MITRE ATT&CK framework
-- Document the investigation findings
-
-
 ## Tools and Resources
 
 - Wireshark
@@ -41,7 +28,7 @@ Although the case scenario provided background information about the suspected i
 
 ## Observed Network Communication Sequence
 
-After DNS resolution and TCP connection establishment, the workstation initiated multiple application-layer communications. HTTPS traffic was preceded by TLS handshakes, while a separate authenticated SMTP session was later observed with the eraqron.shop mail server.
+After DNS resolution, the compromised workstation established multiple TCP connections with external systems. HTTPS communications were preceded by TLS handshakes that negotiated encrypted sessions before application data was exchanged. Later in the capture, a separate authenticated SMTP session was observed with the eraqron.shop mail server over TCP port 587.
 
 ## Indicators of Compromise (IOCs)
 
