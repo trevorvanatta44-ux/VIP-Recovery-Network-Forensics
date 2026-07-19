@@ -6,7 +6,7 @@ This project documents a network forensic investigation of the VIP Recovery malw
 
 ## Background
 
-The Malware-Traffic-Analysis.net case scenario describes an incident in which a phishing email containing a malicious ZIP archive was delivered to a victim. According to the scenario, extracting the archive executed a Visual Basic Script (VBS), resulting in malicious network activity that was recorded in a packet capture (PCAP). The PCAP served as the primary source of forensic evidence analyzed during this investigation.
+The Malware-Traffic-Analysis.net case scenario describes an incident in which a phishing email containing a malicious ZIP archive was delivered to a victim. According to the scenario, extracting the archive executed a Visual Basic Script (VBS), resulting in malicious network activity that was recorded in the PCAP. The PCAP served as the primary source of forensic evidence analyzed during this investigation.
 
 Although the case scenario provided background information about the suspected infection chain, the findings presented in this report are based solely on forensic analysis of the PCAP using Wireshark. All documented indicators of compromise (IOCs), observed network communications, and investigation conclusions were derived from evidence contained within the capture.
 
