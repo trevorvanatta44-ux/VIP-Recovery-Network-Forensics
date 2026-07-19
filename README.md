@@ -14,8 +14,8 @@ Although the case scenario provided background information about the suspected i
 
 - Identify the compromised workstation
 - Analyze DNS requests
+- 
 - Investigate HTTP communications
-- Examine encrypted TLS traffic
 - Identify indicators of compromise (IOCs)
 - Reconstruct the observed communication sequence
 - Map observed network behaviors to the MITRE ATT&CK framework
@@ -44,20 +44,7 @@ Although the case scenario provided background information about the suspected i
 
 The investigation began by reviewing the packet capture before identifying the compromised workstation using endpoint statistics. Network traffic was then examined across DNS, HTTP, SMTP, TLS, and TCP protocols to analyze the observed network activity, identify external systems contacted by the compromised workstation, reconstruct the observed network communication sequence, and extract indicators of compromise (IOCs). The resulting findings were documented and mapped to the MITRE ATT&CK framework.
 
-## Detection & Analysis Workflow
-
-1. Validated the packet capture and reviewed capture statistics.
-2. Identified the compromised workstation using IPv4 Endpoint Statistics.
-3. Reviewed the Protocol Hierarchy to identify the primary network protocols.
-4. Analyzed DNS requests to identify observed domain lookups.
-5. Examined HTTP requests, headers, and transferred objects.
-6. Inspected TLS sessions to identify encrypted communications.
-7. Reviewed SMTP traffic to identify outbound email communications.
-8. Documented indicators of compromise (IOCs).
-9. Reconstructed the observed network communication sequence.
-10. Mapped observed network behaviors to the MITRE ATT&CK framework.
-
-## Investigation Findings
+# Investigation Findings
 
 ## Victim Workstation
 
