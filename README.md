@@ -1,8 +1,8 @@
-# VIP Recovery Malware Network Forensics Investigation
+# VIP Recovery Network Forensics Investigation
 
 ## Executive Summary
 
-This project documents a network forensic investigation of the VIP Recovery malware-related packet capture (PCAP) provided by Malware-Traffic-Analysis.net. Using Wireshark, the PCAP was analyzed to identify the compromised workstation, analyze DNS, TCP handshakes, TLS, HTTP GET, and SMTP communications observed in the capture, extract indicators of compromise (IOCs), reconstruct the observed communication sequence, and map network behaviors to the MITRE ATT&CK framework.
+This project documents a network forensic investigation of the VIP Recovery malware-related packet capture (PCAP) provided by Malware-Traffic-Analysis.net. Using Wireshark, the PCAP was analyzed to identify the compromised workstation, analyze DNS, TCP connections, TLS handshakes, HTTP communications, and SMTP communications observed in the capture, extract indicators of compromise (IOCs), reconstruct the observed communication sequence, and map network behaviors to the MITRE ATT&CK framework.
 
 ## Background
 
@@ -14,9 +14,9 @@ Although the case scenario provided background information about the suspected i
 
 - Identify the compromised workstation
 - Analyze DNS requests
-- Find established TCP handshakes connected to the compromised workstation
-- Investigate TLS communications
-- Investigate HTTP GET communications
+- Confirm TCP handshakes connected to the compromised workstation
+- Analyze TLS handshakes and encrypted communications
+- Analyze HTTP communications and observed web requests
 - Identify indicators of compromise (IOCs)
 - Reconstruct the observed communication sequence
 - Map observed network behaviors to the MITRE ATT&CK framework
@@ -41,17 +41,7 @@ Although the case scenario provided background information about the suspected i
 
 ## Observed Network Communication Sequence
 
-The observed communication sequence was reconstructed by correlating evidence across multiple network protocols observed throughout the packet capture.
-
-1. **DNS Resolution:** The compromised workstation first generated DNS queries to resolve external domain names, including `api.telegram.org`, `eraqron.shop`, and other observed domains. DNS resolution was required before the workstation could establish communications with systems identified by domain name.
-
-2. **TCP Connection Establishment:** After receiving DNS responses, the workstation established TCP connections with the resolved external IP addresses. TCP establishes a reliable connection through a three-way handshake (SYN, SYN/ACK, ACK) before application-layer protocols such as HTTP, TLS, or SMTP exchange data.
-
-3. **TLS Communications:** After TCP connections were established, TLS handshakes were observed between the workstation and several external systems. The TLS handshake negotiated encrypted sessions before application data was exchanged. While the encrypted payloads could not be inspected, the handshake metadata and connection information remained visible for analysis.
-   
-4. **HTTP Communications:** HTTP requests and responses were observed over the established TCP connections, allowing the workstation to communicate with external web resources and retrieve remote content.
-
-5. **SMTP Communications:** Later in the capture, the workstation established an SMTP session over TCP port 587 with the `eraqron.shop` mail server. The session successfully authenticated before transmitting an outbound email from `rejump@eraqron.shop` to `jump@eraqron.shop`.
+After DNS resolution and TCP connection establishment, the workstation initiated multiple application-layer communications. HTTPS traffic was preceded by TLS handshakes, while a separate authenticated SMTP session was later observed with the eraqron.shop mail server.
 
 ## Indicators of Compromise (IOCs)
 
@@ -83,7 +73,7 @@ The observed network behaviors were mapped to the MITRE ATT&CK framework to clas
 |--------------|-----------|-------------------|
 | T1071.004 | DNS | DNS queries were observed resolving external domains including `api.telegram.org`, `eraqron.shop`, `firebasestorage.googleapis.com`, and other domains before outbound communications were established. |
 | T1071.001 | Application Layer Protocol | HTTP and SMTP application-layer protocols were observed communicating with external systems throughout the investigation. |
-| T1041 | Exfiltration Over C2 Channel | An outbound SMTP session over TCP port 587 was observed between the compromised workstation and the `eraqron.shop` mail server. Sender and recipient email addresses were visible because the SMTP session was unencrypted. |
+| T1041 | Exfiltration Over C2 Channel | Observed authenticated outbound SMTP communication consistent with behavior described by T1041. The PCAP alone does not confirm that sensitive data was exfiltrated or that the recipient was attacker-controlled. |
 
 ---
 # Investigation Screenshots
@@ -122,7 +112,7 @@ DNS traffic identified several domains contacted by the infected workstation, in
 
 ![HTTP Requests](Screenshots/06-http-requests.png)
 
-HTTP GET requests were examined to determine the resources requested by the infected host. This activity helped identify additional infrastructure contacted during the malware execution process.
+HTTP GET requests were examined to determine the resources requested by the compromised host. 
 ---
 ## 7. HTTP Header Analysis
 
