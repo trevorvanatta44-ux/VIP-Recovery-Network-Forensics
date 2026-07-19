@@ -2,7 +2,7 @@
 
 ## Executive Summary
 
-This project documents a network forensic investigation of the VIP Recovery malware-related packet capture (PCAP) provided by Malware-Traffic-Analysis.net. Using Wireshark, the PCAP was analyzed to identify the compromised workstation, analyze DNS, HTTP, TLS, and SMTP communications observed in the capture, extract indicators of compromise (IOCs), reconstruct the observed communication sequence, and map network behaviors to the MITRE ATT&CK framework.
+This project documents a network forensic investigation of the VIP Recovery malware-related packet capture (PCAP) provided by Malware-Traffic-Analysis.net. Using Wireshark, the PCAP was analyzed to identify the compromised workstation, analyze DNS, TCP handshakes, TLS, HTTP GET, and SMTP communications observed in the capture, extract indicators of compromise (IOCs), reconstruct the observed communication sequence, and map network behaviors to the MITRE ATT&CK framework.
 
 ## Background
 
@@ -10,12 +10,13 @@ The Malware-Traffic-Analysis.net case scenario describes an incident in which a 
 
 Although the case scenario provided background information about the suspected infection chain, the findings presented in this report are based solely on forensic analysis of the PCAP using Wireshark. All documented indicators of compromise (IOCs), observed network communications, and investigation conclusions were derived from evidence contained within the capture.
 
-## Objectives
+## Objectives and Workflow
 
 - Identify the compromised workstation
 - Analyze DNS requests
-- 
-- Investigate HTTP communications
+- Find established TCP handshakes connected to the compromised workstation
+- Investigate TLS communications
+- Investigate HTTP GET communications
 - Identify indicators of compromise (IOCs)
 - Reconstruct the observed communication sequence
 - Map observed network behaviors to the MITRE ATT&CK framework
@@ -27,22 +28,6 @@ Although the case scenario provided background information about the suspected i
 - Wireshark
 - MITRE ATT&CK Framework
 - Malware-Traffic-Analysis.net (VIP recovery PCAP)
-
-## Skills Demonstrated
-
-- Network Forensics
-- Malware Traffic Analysis
-- TCP/IP Analysis
-- DNS Analysis
-- HTTP Analysis
-- TLS Traffic Analysis
-- Indicator of Compromise (IOC) Identification
-- Communication Sequence Reconstruction
-- MITRE ATT&CK Mapping
-
-## Investigation Workflow
-
-The investigation began by reviewing the packet capture before identifying the compromised workstation using endpoint statistics. Network traffic was then examined across DNS, HTTP, SMTP, TLS, and TCP protocols to analyze the observed network activity, identify external systems contacted by the compromised workstation, reconstruct the observed network communication sequence, and extract indicators of compromise (IOCs). The resulting findings were documented and mapped to the MITRE ATT&CK framework.
 
 # Investigation Findings
 
