@@ -22,7 +22,7 @@ Although the case scenario provided background information about the suspected i
 
 - **IP Address:** `10.1.9.101`
 - Identified as the compromised workstation based on IPv4 Endpoint Statistics and IPv4 Conversation analysis.
-- Generated the highest volume of observed network activity within the packet capture.
+- Generated the highest number of packets observed in the capture, making it the primary host selected for further investigation.
 - Initiated DNS, HTTP, TLS, and SMTP communications with multiple external systems throughout the investigation.
 - Served as the primary focus of the network forensic analysis because it was responsible for the majority of the observed communications.
 
@@ -30,7 +30,7 @@ Although the case scenario provided background information about the suspected i
 
 After DNS resolution, the compromised workstation established multiple TCP connections with external systems. HTTPS communications were preceded by TLS handshakes that negotiated encrypted sessions before application data was exchanged. Later in the capture, a separate authenticated SMTP session was observed with the eraqron.shop mail server over TCP port 587.
 
-## Indicators of Compromise (IOCs)
+## Network Indicators of Compromise (IOCs)
 
 The following domains and IP addresses were observed during the investigation and are documented as indicators associated with the captured network activity. Their inclusion does not necessarily indicate that every domain or IP address is inherently malicious; some represent legitimate services contacted during the observed communications.
 
@@ -51,6 +51,8 @@ The following domains and IP addresses were observed during the investigation an
 - 104.216.7.152
 - 149.154.166.110
 - 162.254.34.31
+
+No malware sample was available for forensic examination; therefore, file-based indicators such as MD5, SHA-1, and SHA-256 hashes could not be validated as part of this investigation.
 
 ## MITRE ATT&CK Mapping
 
