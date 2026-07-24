@@ -75,7 +75,7 @@ The packet capture was successfully loaded into Wireshark, confirming a total of
 ---
 ## 2. Protocol Hierarchy
 
-![Protocol Hierarchy](Screenshots/Networkprotocolhierarchy.png)
+![Protocol Hierarchy](Screenshots/ProtocolHierarchy)
 
 The protocol hierarchy identified the primary protocols present in the capture, including DNS, HTTP, TCP, and TLS. This overview established the types of network communications that would be investigated throughout the incident.
 ---
