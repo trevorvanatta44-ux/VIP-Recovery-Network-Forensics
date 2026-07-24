@@ -113,7 +113,7 @@ Inspection of the HTTP request headers identified the destination host, request 
 
 ![HTTP Objects](Screenshots/httpobjectslist.png)
 
-Reviewing transferred HTTP objects identified web content transferred during the observed communications and provided additional context for the investigation.
+Reviewed transferred HTTP objects, identified web content transferred during the observed communications, and provided additional context for the investigation.
 ---
 ## 9. SMTP Analysis
 
