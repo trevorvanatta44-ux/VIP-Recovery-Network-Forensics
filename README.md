@@ -71,7 +71,7 @@ The observed network behaviors were mapped to the MITRE ATT&CK framework to clas
 
 ![Evidence Loaded](Screenshots/01-pcap-loaded.png)
 
-The packet capture was successfully loaded into Wireshark, confirming a total of 5,299 captured packets for analysis. Initial inspection identified DNS, TCP, and TLS traffic originating from the internal workstation (Ip address), providing the starting point for the investigation.
+The packet capture was successfully loaded into Wireshark, confirming a total of 5,299 captured packets for analysis. Initial inspection identified DNS, TCP, and TLS traffic originating from the internal workstation 10.1.9.101, providing the starting point for the investigation.
 ---
 ## 2. Protocol Hierarchy
 
@@ -95,7 +95,7 @@ Conversation statistics revealed the external systems communicating with the inf
 
 ![DNS Analysis](Screenshots/05-dns-analysis.png)
 
-DNS traffic identified several external domains including Telegram infrastructure, and additional external domains used during the infection.
+DNS traffic identified several external domains, including api.telegram.org, eraqron.shop, and other domains contacted by the compromised workstation during the investigation.
 ---
 ## 6. HTTP Requests
 
@@ -113,7 +113,7 @@ Inspection of the HTTP request headers identified the destination host, request 
 
 ![HTTP Objects](Screenshots/httpobjectslist.png)
 
-Reviewing transferred objects helped identify files and additional transferred web objects observed during the investigation.
+Reviewing transferred HTTP objects identified web content transferred during the observed communications and provided additional context for the investigation.
 ---
 ## 9. SMTP Analysis
 
